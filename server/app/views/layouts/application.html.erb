@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+
 <html>
   <head>
     <title>Server</title>
@@ -10,6 +12,20 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+    <% end %>
+    
+    <!-- Bootstrap core CSS -->
+    <!-- Custom fonts for this template -->
+    <!-- Custom styles for this template -->
+    <!-- Navigation -->
     <%= yield %>
+    <!-- Footer -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- Plugin JavaScript -->
+    <!-- Custom scripts for this template -->
   </body>
 </html>
