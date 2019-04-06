@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :consolidations
   devise_for :users
   resources :projects
   root 'projects#index' #それぞれのパスに設定

@@ -71,3 +71,6 @@ end
 # Bootstrap themes
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
+# Enable UUIDs
+gem 'activeuuid' 

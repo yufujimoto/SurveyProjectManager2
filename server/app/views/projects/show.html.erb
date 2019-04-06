@@ -1,54 +1,59 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Uuid:</strong>
-  <%= @project.uuid %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Begining:</strong>
-  <%= @project.begining %>
-</p>
-
-<p>
-  <strong>Ending:</strong>
-  <%= @project.ending %>
-</p>
-
-<p>
-  <strong>Phase:</strong>
-  <%= @project.phase %>
-</p>
-
-<p>
-  <strong>Introduction:</strong>
-  <%= @project.introduction %>
-</p>
-
-<p>
-  <strong>Cause:</strong>
-  <%= @project.cause %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @project.created_by %>
-</p>
-
-<p>
-  <strong>Cover:</strong>
-  <%= @project.cover %>
-</p>
-
+<h2><%= @project.name %></h2>
+<hr />
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+<hr />
+
+<div class="row">
+  <div class="col-sm-6">
+    <strong>Cover:</strong>
+      <%= @project.cover %>
+    </p>
+  </div>
+  
+  <div class="col-sm-6">
+    <p>
+      <strong>Uuid:</strong>
+      <%= @project.uuid %>
+    </p>
+    
+    <p>
+      <strong>Title:</strong>
+      <%= @project.title %>
+    </p>
+    
+    <p>
+      <strong>Begining:</strong>
+      <%= @project.begining %>
+    </p>
+    
+    <p>
+      <strong>Ending:</strong>
+      <%= @project.ending %>
+    </p>
+    
+    <p>
+      <strong>Phase:</strong>
+      <%= @project.phase %>
+    </p>
+    
+    <p>
+      <strong>Introduction:</strong>
+      <%= @project.introduction %>
+    </p>
+    
+    <p>
+      <strong>Cause:</strong>
+      <%= @project.cause %>
+    </p>
+    
+    <p>
+      <strong>Created by:</strong>
+      <%= @project.created_by %>
+    </p>
+    
+    <p>
+  </div>
+</div>
+
+<hr />

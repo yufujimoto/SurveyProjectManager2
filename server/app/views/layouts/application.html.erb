@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <!-- Latest compiled and minified CSS -->
+<!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+-->
+<%= stylesheet_link_tag 'bootstrap.min', media: 'all' %>
+
 <html>
   <head>
     <title>Server</title>
@@ -12,20 +16,30 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-    <% end %>
-    
-    <!-- Bootstrap core CSS -->
-    <!-- Custom fonts for this template -->
-    <!-- Custom styles for this template -->
-    <!-- Navigation -->
-    <%= yield %>
-    <!-- Footer -->
-    <!-- Bootstrap core JavaScript -->
-    <!-- Plugin JavaScript -->
-    <!-- Custom scripts for this template -->
+    <div class="container">
+      <div class="header">
+        <% if user_signed_in? %>
+          <p>
+            <%= link_to "User", edit_user_registration_path, method: :get %> | 
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </p>
+        <% end %>
+      </div>
+      
+      <div style="text-align: center">
+        <p style="color: green"><%= notice %></p>
+        <p style="color: green"><%= alert %></p>
+      </div>
+      
+      <!-- Bootstrap core CSS -->
+      <!-- Custom fonts for this template -->
+      <!-- Custom styles for this template -->
+      <!-- Navigation -->
+      <%= yield %>
+      <!-- Footer -->
+      <!-- Bootstrap core JavaScript -->
+      <!-- Plugin JavaScript -->
+      <!-- Custom scripts for this template -->
+    </div>
   </body>
 </html>

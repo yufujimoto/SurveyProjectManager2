@@ -59,6 +59,11 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: '192.168.97.2', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener_web
+  
+  # To enable UUIDs on sqlite3
+  config.generators do |generator|
+    generator.orm :active_record, primary_key_type: :uuid
+  end
 end

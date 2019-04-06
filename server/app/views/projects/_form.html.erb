@@ -10,58 +10,31 @@
       </ul>
     </div>
   <% end %>
+  
+  <table>
+    <tr>
+      <td rowspan="8"></td>
+      <th style="width: 150px"><%= form.label :uuid %></th>
+      <td style="width: 300px"><%= form.text_field :uuid, :class => "text_field", :value => SecureRandom.uuid, :readonly => true %></td>
+    </tr>
+    <tr><th><%= form.label :name %></th><td style="width: 300px"><%= form.text_field :name, :class => "text_field" %></td></tr>
+    <tr><th><%= form.label :title %></th><td style="width: 300px"><%= form.text_field :title, :class => "text_field" %></td></tr>
+    <tr><th><%= form.label :begining %></th><td style="width: 300px"><%= form.date_select :begining %></td></tr>
+    <tr><th><%= form.label :ending %></th><td style="width: 300px"><%= form.date_select :ending %></td></tr>
+    <tr><th><%= form.label :phase %></th><td style="width: 300px"><%= form.number_field :phase %></td></tr>
+    <tr><th><%= form.label :introduction %></th><td style="width: 300px"><%= form.text_area :introduction, :class => "text_field" %></td></tr>
+    <tr><th><%= form.label :cause %></th><td style="width: 300px"><%= form.text_area :cause, :class => "text_field" %></td></tr>
+    <tr>
+      <td>
+        <div class="field">
+          <%= form.label :cover %><%= form.text_field :cover %>
+        </div>
+      </td>
+      <th><%= form.label :created_by %></th><td style="width: 300px"><%= form.text_field :created_by, :class => "text_field",:value => current_user.username %></td></tr>
+  </table>
 
-  <div class="field">
-    <%= form.label :uuid %>
-    <%= form.text_field :uuid %>
-  </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :begining %>
-    <%= form.date_select :begining %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ending %>
-    <%= form.date_select :ending %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phase %>
-    <%= form.number_field :phase %>
-  </div>
-
-  <div class="field">
-    <%= form.label :introduction %>
-    <%= form.text_area :introduction %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cause %>
-    <%= form.text_area :cause %>
-  </div>
-
-  <div class="field">
-    <%= form.label :created_by %>
-    <%= form.text_field :created_by %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cover %>
-    <%= form.text_field :cover %>
-  </div>
-
-  <div class="actions">
+  <div class="actions" style="text-align: right">
     <%= form.submit %>
   </div>
 <% end %>
