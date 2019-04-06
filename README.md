@@ -4,4 +4,7 @@ Survey Project Manager II (SPM-II) has been developed to manage various kinds of
 
 SPM-II is deeply related to the “Survey Data Collector (SDC)”, which is the offline digital archiving system. SDC is originaly developed as a tethering system for Sony A6000 and A6300, and lately extended as the total digital archiving system managing various kinds of digital data in combination with the database. The ideal workflow is that users collect and/or manage digitally archived outcomes on SDC and integrate these datasets on the SPM-II to share and/or publish their resultants.
 
+# International Standards
+
+SPM-II is developed in comforming to the International Standars for Geographic Information System (ISO 19100 series). 
 
