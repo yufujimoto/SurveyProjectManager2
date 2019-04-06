@@ -17,3 +17,9 @@ The most essential issue on digital archiving system is versatility. However, in
 The concept of SOP is composed by three layers of meta schema; the first layer reflrects the structure of GFM directly, the second layer expands the first layer to exchange dataset among different systems and the third layer expands the second layer to apply GFM for specified field to apply GFM indirectly.
 
 SPM-II and SDC are well implementation of the SOP’s third layer. Basically, both SPM-II and SDC applies same model based on SOP’s third layer, but SPM-II includes some extra classes concerning to project information. 
+
+## The Work-oriented approach
+
+In general, digital archiving projects consists of three steps. The first step is collecting and digitizing objects by digital devices such as cameras or scanners. In this step, project members will stay at main field either indoor or outdoor, they will collect objects to digitize and digitize them day by day. Through this step, digital files are stored on laptop, removable storages or online storages when the field is under the online environment. The second step is constructing database. In this step, digitized objects are ordered, editited and related to specific information about the object on the Data-Base. The final step is publishing. In this step, digitized objects and their related information will be put on well formated layout. In some cases some objects can be published, and others cannot. 
+
+The important point is the way of data management in each step. If the project is larger, engaged memberswill be larger and the term of the project will be longer.In such situation, it is difficult to manage pilled of various kinds digital data with systematic manner by manual. Structure of directories and rules for file names, for example, is deeply depending on individual, and this sisuation makes it difficult to trace previously made digital files.  
