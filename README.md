@@ -15,3 +15,5 @@ The most essential issue on digital archiving system is versatility. However, in
 
 ## The Simple Object Profile
 The concept of SOP is composed by three layers of meta schema; the first layer reflrects the structure of GFM directly, the second layer expands the first layer to exchange dataset among different systems and the third layer expands the second layer to apply GFM for specified field to apply GFM indirectly.
+
+SPM-II and SDC are well implementation of the SOP’s third layer. Basically, both SPM-II and SDC applies same model based on SOP’s third layer, but SPM-II includes some extra classes concerning to project information. 
