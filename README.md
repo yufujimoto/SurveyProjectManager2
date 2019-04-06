@@ -6,5 +6,8 @@ SPM-II is deeply related to the “Survey Data Collector (SDC)”, which is the 
 
 # International Standards
 
-SPM-II is developed in comforming to the International Standars for Geographic Information System (ISO 19100 series). 
+Althogh there are some international standards such as the Dublin Core or CIDOC CRM potentially applied for digital archiving project, SPM-II adopted ISO 19100 series. This series of standards. This series of standards provides a set of standards of application schema, metadata, data types, encoding rules, and etc for Geographic information. 
 
+Reason why SPM-II adopted ISO 191100 series is its concept of the “Geographic Feature”, which is defined as the “General Feature Model (GFM)” on the ISO 19109. Accroding to this concept, various kinds of real objects can be ordered and classified by the meta-model of GFM, which defines class name, attributes, operation and relationship between classes. 
+
+  
