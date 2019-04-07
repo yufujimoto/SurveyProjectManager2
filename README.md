@@ -22,4 +22,10 @@ SPM-II and SDC are well implementation of the SOP’s third layer. Basically, bo
 
 In general, digital archiving projects consists of three steps. The first step is collecting and digitizing objects by digital devices such as cameras or scanners. In this step, project members will visit either indoor or outdoor field, and they will collect objects to digitize and digitize them day by day. Through this step, digital files may be stored on laptop, removable storages or online storages when the field is under the online environment. The second step is constructing database. In this step, digitized objects are ordered, editited and related to specific information about the object on the Data-Base. The final step is publishing. In this step, digitized objects and their related information will be put on well formated layout. In some cases some objects can be published, and others cannot. 
 
-The important point is the way of data management in each step. If the project is larger, engaged members will be larger and the term of the project will be longer as well. In such situation, it is difficult to manage a pilled of various digital data adequately because structure of directories and rules for file names, for example, is deeply depending on individual. The essential issue is that how to keep history of editing data 
+The important point is the way of data management in each step. If the project is larger, engaged members will be larger and the term of the project will be longer as well. In such situation, it is difficult to manage a pilled of various digital data adequately because structure of directories and rules for file names, for example, is deeply depending on individual. 
+
+The basic concept of the Work-Oriented approach is that ordering daily workflow and designing the application schema of database in corresponding with the workflow. Both SDC and SPM-II is based on this concept, and by using these sytems, users can manage digitized outcomes without stress. 
+
+# Requirements
+
+Currently, SPM-II is being developed under the Ubuntu Linux, and tested on it. Although the previous version of SPM is developed by using PHP and Javascripts, current version is constructed with Ruby on Rails environment. Therefore basic knowledge and/or experience of bush on Linux and Ruby and Rails are premised. 
