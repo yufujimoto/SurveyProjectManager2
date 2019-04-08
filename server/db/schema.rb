@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_080232) do
-
-  create_table "consolidations", force: :cascade do |t|
-    t.string "uuid"
-    t.string "name"
-    t.string "geographic_annotation"
-    t.string "temporal_annotation"
-    t.text "description"
-    t.string "flickr_photosetid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_04_08_032942) do
 
   create_table "projects", force: :cascade do |t|
     t.string "uuid"
@@ -51,18 +40,17 @@ ActiveRecord::Schema.define(version: 2019_04_05_080232) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "firstname"
+    t.string "surname"
+    t.string "affiliation"
+    t.string "username"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "username"
-    t.string "firstname"
-    t.string "surname"
-    t.string "affiliation"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

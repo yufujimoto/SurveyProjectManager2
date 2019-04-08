@@ -4,7 +4,6 @@ gem install devise
 gem install letter_opener_web
 gem install jquery-rails
 gem install bootstrap
-gem activeuuid
 
 # Dowload the source from GitHub.
 git clone https://github.com/yufujimoto/SurveyProjectManager2.git
@@ -28,10 +27,6 @@ rails g migration add_username_to_users username:string
 # Migrate the db
 rails db:migrate
 rails g devise:views
-
-
-# Make UUIDs enabled.
-rails g migration enable_uuid_extension
 
 # Constructing main db.
 rails g scaffold Project uuid:string name:string title:string begining:date ending:date phase:integer introduction:text cause:text created_by:string cover:string

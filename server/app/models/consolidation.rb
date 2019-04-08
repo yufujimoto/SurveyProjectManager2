@@ -1,2 +1,0 @@
-class Consolidation < ApplicationRecord
-end
