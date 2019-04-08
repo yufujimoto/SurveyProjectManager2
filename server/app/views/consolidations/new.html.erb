@@ -1,0 +1,10 @@
+<h2>New Consolidation</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', project_url(:id => params[:lid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+</div>
+<hr />
+
+<%= render 'form', consolidation: @consolidation %>
+
+

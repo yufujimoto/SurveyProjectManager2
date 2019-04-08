@@ -10,11 +10,13 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @consolidations = Consolidation.where(project: @project.uuid)
   end
 
   # GET /projects/new
   def new
     @project = Project.new
+    @project.uuid = SecureRandom.uuid
   end
 
   # GET /projects/1/edit
@@ -54,7 +56,13 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    consolidations = Consolidation.where(project: @project.uuid)
+    consolidations.each do |consolidation|
+      consolidation.destroy
+    end
+    
     @project.destroy
+    
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }

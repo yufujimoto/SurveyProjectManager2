@@ -1,7 +1,9 @@
 <h2><%= @project.name %></h2>
 <hr />
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="btn-group">
+  <%= button_to 'Back', projects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Edit', edit_project_path(@project), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+</div>
 <hr />
 
 <div class="row">
@@ -12,48 +14,51 @@
   </div>
   
   <div class="col-sm-6">
-    <p>
-      <strong>Uuid:</strong>
-      <%= @project.uuid %>
-    </p>
-    
-    <p>
-      <strong>Title:</strong>
-      <%= @project.title %>
-    </p>
-    
-    <p>
-      <strong>Begining:</strong>
-      <%= @project.begining %>
-    </p>
-    
-    <p>
-      <strong>Ending:</strong>
-      <%= @project.ending %>
-    </p>
-    
-    <p>
-      <strong>Phase:</strong>
-      <%= @project.phase %>
-    </p>
-    
-    <p>
-      <strong>Introduction:</strong>
-      <%= @project.introduction %>
-    </p>
-    
-    <p>
-      <strong>Cause:</strong>
-      <%= @project.cause %>
-    </p>
-    
-    <p>
-      <strong>Created by:</strong>
-      <%= @project.created_by %>
-    </p>
-    
-    <p>
+    <p><strong>Uuid:</strong><%= @project.uuid %></p>
+    <p><strong>Title:</strong><%= @project.title %></p>
+    <p><strong>Begining:</strong><%= @project.begining %></p>
+    <p><strong>Ending:</strong><%= @project.ending %></p>
+    <p><strong>Phase:</strong><%= @project.phase %></p>
+    <p><strong>Introduction:</strong><%= @project.introduction %></p>
+    <p><strong>Cause:</strong><%= @project.cause %></p>
+    <p><strong>Created by:</strong><%= @project.created_by %></p>
   </div>
 </div>
 
 <hr />
+<h3>Consolidations</h3>
+<hr />
+<div class="btn-group">
+ <%= button_to 'New Consolidation', new_consolidation_path, {method: :get, :class => "btn btn-success", :style => "width: 200px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
+</div>
+<hr />
+<table>
+  <thead>
+    <tr>
+      <th style="width: 250px">Name</th>
+      <th style="width: 200px">Geography</th>
+      <th style="width: 200px">Temporal Info</th>
+      <th style="width: 350px">Description</th>
+      <th style="width: auto"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+    <% @consolidations.each do |consolidation| %>
+      <tr class="zebra">
+        <td><%= consolidation.name %></td>
+        <td><%= consolidation.geographic_annotation %></td>
+        <td><%= consolidation.temporal_annotation %></td>
+        <td><%= consolidation.description %></td>
+        <td>
+         <div class="btn-group">
+          <%= button_to 'Show', consolidation, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
+          <%= button_to 'Edit', edit_consolidation_path(consolidation), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
+          <%= button_to 'Delete', consolidation, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "width: 90px; border-radius: 0 !important;" %>
+         </div>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

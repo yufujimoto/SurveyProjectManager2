@@ -1,0 +1,35 @@
+<%= form_with(model: consolidation, local: true) do |form| %>
+  <% if consolidation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(consolidation.errors.count, "error") %> prohibited this consolidation from being saved:</h2>
+
+      <ul>
+      <% consolidation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col-sm-6">
+      
+    </div>
+    <div class="col-sm-6">
+      <table>
+        <tr><th><%= form.label :uuid %></th><td><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td></tr>
+        <tr><th><%= form.label :project %></th><td style="width: 300px"><%= form.text_field :project, :class => "text_field", :value => params[:project], :readonly => true  %></td></tr>
+        <tr><th><%= form.label :name %></th><td style="width: 300px"><%= form.text_field :name, :class => "text_field" %></td></tr>
+        <tr><th><%= form.label :geographic_annotation %></th><td style="width: 300px"><%= form.text_field :geographic_annotation, :class => "text_field" %></td></tr>
+        <tr><th><%= form.label :temporal_annotation %></th><td style="width: 300px"><%= form.text_field :temporal_annotation, :class => "text_field" %></td></tr>
+        <tr><th><%= form.label :description %></th><td style="width: 300px"><%= form.text_area :description, :class => "text_field" %></td></tr>
+        <tr><th><%= form.label :flickr_photosetid %></th><td style="width: 300px"><%= form.text_field :flickr_photosetid, :class => "text_field" %></td></tr>
+      </table>
+    
+      <div class="actions" style="text-align: right">
+          <%= form.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>
+  

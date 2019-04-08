@@ -1,0 +1,10 @@
+<p><strong>Uuid:</strong><%= @consolidation.uuid %></p>
+<p><strong>Name:</strong><%= @consolidation.name %></p>
+<p><strong>Geographic annotation:</strong><%= @consolidation.geographic_annotation %></p>
+<p><strong>Temporal annotation:</strong><%= @consolidation.temporal_annotation %></p>
+<p><strong>Description:</strong><%= @consolidation.description %></p>
+<p><strong>Flickr photosetid:</strong><%= @consolidation.flickr_photosetid %></p>
+<p><strong>Project:</strong><%= @consolidation.project %></p>
+
+<%= link_to 'Edit', edit_consolidation_path(@consolidation, params: {uuid: params[:project], lid: params[:lid]}) %> |
+<%= link_to 'Back', project_url(:id => params[:lid]) %></td>

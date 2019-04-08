@@ -1,48 +1,48 @@
 <h2>Sign up</h2>
-
+<hr />
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :Surname %><br />
-    <%= f.text_field :surname, class: "form-control" %>
+  
+  <div style="text-align: center">
+    <h4>User Information</h4>
+    <p class="field">
+      <%= f.text_field :surname, class: "text_field", placeholder: "Surname" %>
+    </p>
+    <p class="field">
+      <%= f.text_field :firstname, class: "text_field", placeholder: "Firstname" %>
+    </p>
+    <p class="field">
+      <%= f.text_field :affiliation, class: "text_field", placeholder: "Affiliation" %>
+    </p>
   </div>
   
-  <div class="field">
-    <%= f.label :Firstname %><br />
-    <%= f.text_field :firstname, class: "form-control" %>
+  <div style="text-align: center">
+    <h4>Login Information</h4>
+    <p class="field">
+      <%= f.text_field :username, class: "text_field", placeholder: "Username" %>
+    </p>
+    
+    <p class="field">
+      <%= f.email_field :email, class: "text_field", autofocus: true, autocomplete: "email", placeholder: "E-Mail" %>
+    </p>
+  
+    <p class="field">
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, class: "text_field", autocomplete: "new-password", placeholder: "Password" %>
+    </p>
+  
+    <p class="field">
+      <%= f.password_field :password_confirmation, class: "text_field", autocomplete: "new-password", placeholder: "Password Confirmation" %>
+    </p>
   </div>
   
-  <div class="field">
-    <%= f.label :Affiliation %><br />
-    <%= f.text_field :affiliation, class: "form-control" %>
+  <div style="text-align: center">
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+    
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :Username %><br />
-    <%= f.text_field :username, class: "form-control" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

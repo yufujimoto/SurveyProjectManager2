@@ -1,0 +1,10 @@
+<h2>Editing Consolidation</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', project_url(:id => params[:lid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Show', consolidation_url(@consolidation), {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+</div>
+<hr />
+
+<%= render 'form', consolidation: @consolidation %>
+
