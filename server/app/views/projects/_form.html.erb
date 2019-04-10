@@ -27,7 +27,10 @@
     <tr>
       <td>
         <div class="field">
-          <%= form.label :cover %><%= form.text_field :cover %>
+          <%= image_tag @project.cover.url if @project.cover? %>
+          <%= form.label :cover %>
+          <%= form.file_field :cover %>
+          <%= form.hidden_field :cover_cache %>
         </div>
       </td>
       <th><%= form.label :created_by %></th><td style="width: 300px"><%= form.text_field :created_by, :class => "text_field",:value => current_user.username %></td></tr>

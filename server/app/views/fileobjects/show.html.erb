@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @fileobject.uuid %>
+</p>
+
+<p>
+  <strong>Consolidation:</strong>
+  <%= @fileobject.consolidation %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @fileobject.material %>
+</p>
+
+<p>
+  <strong>Created date:</strong>
+  <%= @fileobject.created_date %>
+</p>
+
+<p>
+  <strong>Modified date:</strong>
+  <%= @fileobject.modified_date %>
+</p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @fileobject.file_name %>
+</p>
+
+<p>
+  <strong>File type:</strong>
+  <%= @fileobject.file_type %>
+</p>
+
+<p>
+  <strong>Alias name:</strong>
+  <%= @fileobject.alias_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @fileobject.status %>
+</p>
+
+<p>
+  <strong>Make public:</strong>
+  <%= @fileobject.make_public %>
+</p>
+
+<p>
+  <strong>Is locked:</strong>
+  <%= @fileobject.is_locked %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @fileobject.source %>
+</p>
+
+<p>
+  <strong>File operation:</strong>
+  <%= @fileobject.file_operation %>
+</p>
+
+<p>
+  <strong>Operating application:</strong>
+  <%= @fileobject.operating_application %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @fileobject.caption %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fileobject.description %>
+</p>
+
+<p>
+  <strong>Flickr photoid:</strong>
+  <%= @fileobject.flickr_photoid %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= image_tag @fileobject.file.url %>
+</p>
+
+<%= link_to 'Edit', edit_fileobject_path(@fileobject) %> |
+<%= link_to 'Back', fileobjects_path %>

@@ -71,4 +71,5 @@ end
 # Bootstrap themes
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-
+gem 'carrierwave'   
+gem 'bootstrap-sass'  

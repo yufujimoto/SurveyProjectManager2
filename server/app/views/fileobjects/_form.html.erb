@@ -1,0 +1,110 @@
+<%= form_with(model: fileobject, local: true) do |form| %>
+  <% if fileobject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fileobject.errors.count, "error") %> prohibited this fileobject from being saved:</h2>
+
+      <ul>
+      <% fileobject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uuid %>
+    <%= form.text_field :uuid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :consolidation %>
+    <%= form.text_field :consolidation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material %>
+    <%= form.text_field :material %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_date %>
+    <%= form.datetime_select :created_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modified_date %>
+    <%= form.datetime_select :modified_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_name %>
+    <%= form.text_field :file_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_type %>
+    <%= form.text_field :file_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alias_name %>
+    <%= form.text_field :alias_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :make_public %>
+    <%= form.check_box :make_public %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_locked %>
+    <%= form.check_box :is_locked %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_operation %>
+    <%= form.text_field :file_operation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :operating_application %>
+    <%= form.text_field :operating_application %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caption %>
+    <%= form.text_field :caption %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flickr_photoid %>
+    <%= form.text_field :flickr_photoid %>
+  </div>
+
+<div class="field">
+  <%= file_tag @fileobject.file.url if @fileobject.file? %>
+  <%= form.label :file %><br>
+  <%= form.file_field :file%>
+  <%= form.hidden_field :file_cache %>
+</div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

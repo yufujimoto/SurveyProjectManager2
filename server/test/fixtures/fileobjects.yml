@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  consolidation: MyString
+  material: MyString
+  created_date: 2019-04-09 20:22:25
+  modified_date: 2019-04-09 20:22:25
+  file_name: MyString
+  file_type: MyString
+  alias_name: MyString
+  status: MyString
+  make_public: false
+  is_locked: false
+  source: MyString
+  file_operation: MyString
+  operating_application: MyString
+  caption: MyString
+  description: MyText
+  flickr_photoid: MyString
+  attachment: MyString
+
+two:
+  uuid: MyString
+  consolidation: MyString
+  material: MyString
+  created_date: 2019-04-09 20:22:25
+  modified_date: 2019-04-09 20:22:25
+  file_name: MyString
+  file_type: MyString
+  alias_name: MyString
+  status: MyString
+  make_public: false
+  is_locked: false
+  source: MyString
+  file_operation: MyString
+  operating_application: MyString
+  caption: MyString
+  description: MyText
+  flickr_photoid: MyString
+  attachment: MyString

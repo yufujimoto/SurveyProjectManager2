@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_050207) do
+ActiveRecord::Schema.define(version: 2019_04_10_024118) do
 
   create_table "consolidations", force: :cascade do |t|
     t.string "uuid"
@@ -24,6 +24,30 @@ ActiveRecord::Schema.define(version: 2019_04_08_050207) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fileobjects", force: :cascade do |t|
+    t.string "uuid"
+    t.string "consolidation"
+    t.string "material"
+    t.datetime "created_date"
+    t.datetime "modified_date"
+    t.string "file_name"
+    t.string "file_type"
+    t.string "alias_name"
+    t.string "status"
+    t.boolean "make_public"
+    t.boolean "is_locked"
+    t.string "source"
+    t.string "file_operation"
+    t.string "operating_application"
+    t.string "caption"
+    t.text "description"
+    t.string "flickr_photoid"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "uuid"
     t.string "name"
@@ -34,9 +58,9 @@ ActiveRecord::Schema.define(version: 2019_04_08_050207) do
     t.text "introduction"
     t.text "cause"
     t.string "created_by"
-    t.string "cover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover"
   end
 
   create_table "users", force: :cascade do |t|

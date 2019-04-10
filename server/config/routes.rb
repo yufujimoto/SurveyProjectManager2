@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :consolidations
+  resources :fileobjects
   devise_for :users
+
   resources :projects
-  root 'projects#index' #それぞれのパスに設定
+  resources :consolidations
   
-  # post 'new_consolidation' => 'consolidations#new'
+  root 'projects#index'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

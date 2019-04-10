@@ -16,7 +16,6 @@ class ProjectsTest < ApplicationSystemTestCase
 
     fill_in "Begining", with: @project.begining
     fill_in "Cause", with: @project.cause
-    fill_in "Cover", with: @project.cover
     fill_in "Created by", with: @project.created_by
     fill_in "Ending", with: @project.ending
     fill_in "Introduction", with: @project.introduction
@@ -36,7 +35,6 @@ class ProjectsTest < ApplicationSystemTestCase
 
     fill_in "Begining", with: @project.begining
     fill_in "Cause", with: @project.cause
-    fill_in "Cover", with: @project.cover
     fill_in "Created by", with: @project.created_by
     fill_in "Ending", with: @project.ending
     fill_in "Introduction", with: @project.introduction

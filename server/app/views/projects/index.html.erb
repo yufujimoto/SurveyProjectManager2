@@ -1,3 +1,4 @@
+
 <h2>Projects</h2>
 <hr />
 <%= button_to 'New Project', new_project_path, {method: :get, :class => "btn btn-success", :style => "width: 150px; border-radius: 0 !important;"} %>
@@ -6,18 +7,22 @@
 <table>
   <thead>
     <tr>
+      <th style="width: 100px"></th>
       <th style="width: 300px">Name</th>
       <th style="width: 300px">Title</th>
       <th style="width: 100px">Begining</th>
       <th style="width: 100px">Ending</th>
       <th style="width: 100px">Phase</th>
-      <th style="width: auto">Control</th>
+      <th style="width: auto"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
       <tr class="zebra">
+        <td>
+          <%= image_tag(project.cover.url, :width => "99px", :height => "66px") %>
+        </td>
         <td><%= project.name %></td>
         <td><%= project.title %></td>
         <td><%= project.begining %></td>
@@ -34,7 +39,4 @@
 </table>
 
 <hr />
-
-
-
 

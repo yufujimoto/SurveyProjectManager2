@@ -10,7 +10,6 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.text :cause
       t.string :created_by
-      t.string :cover
 
       t.timestamps
     end

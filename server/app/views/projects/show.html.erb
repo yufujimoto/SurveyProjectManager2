@@ -7,10 +7,8 @@
 <hr />
 
 <div class="row">
-  <div class="col-sm-6">
-    <strong>Cover:</strong>
-      <%= @project.cover %>
-    </p>
+  <div class="col-sm-6" style="text-align: center; vertical-align: middle">
+    <%= image_tag(@project.cover.url, :height => "300px", :width => "550px") %>
   </div>
   
   <div class="col-sm-6">
@@ -24,6 +22,7 @@
     <p><strong>Created by:</strong><%= @project.created_by %></p>
   </div>
 </div>
+
 
 <hr />
 <h3>Consolidations</h3>
