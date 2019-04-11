@@ -15,6 +15,7 @@ class FileobjectsController < ApplicationController
   # GET /fileobjects/new
   def new
     @fileobject = Fileobject.new
+    @fileobject.uuid = SecureRandom.uuid
   end
 
   # GET /fileobjects/1/edit
@@ -25,12 +26,28 @@ class FileobjectsController < ApplicationController
   # POST /fileobjects.json
   def create
     @fileobject = Fileobject.new(fileobject_params)
-
-    respond_to do |format|
-      if @fileobject.save
-        format.html { redirect_to @fileobject, notice: 'Fileobject was successfully created.' }
-        format.json { render :show, status: :created, location: @fileobject }
-      else
+    
+    file = @fileobject.file.url
+    
+    if file != nil
+      extension = @fileobject.file.file.extension.downcase
+      
+      if %w{jpg png gif bmp jpeg tif tiff}.include?(extension)
+        @fileobject.file_type = "Image"
+      end
+      
+      respond_to do |format|
+        if @fileobject.save
+          format.html { redirect_to @fileobject, notice: 'Fileobject was successfully created.' }
+          format.json { render :show, status: :created, location: @fileobject }
+        else
+          format.html { render :new }
+          format.json { render json: @fileobject.errors, status: :unprocessable_entity }
+        end
+      end
+    
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @fileobject.errors, status: :unprocessable_entity }
       end
@@ -69,6 +86,6 @@ class FileobjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fileobject_params
-      params.require(:fileobject).permit(:uuid, :consolidation, :material, :created_date, :modified_date, :file_name, :file_type, :alias_name, :status, :make_public, :is_locked, :source, :file_operation, :operating_application, :caption, :description, :flickr_photoid, :attachment, :file, :file_cache)
+      params.require(:fileobject).permit(:uuid, :consolidation, :material, :created_date, :modified_date, :file, :file_type, :alias_name, :status, :make_public, :is_locked, :source, :file_operation, :operating_application, :caption, :description, :flickr_photoid, :file_cache)
     end
 end

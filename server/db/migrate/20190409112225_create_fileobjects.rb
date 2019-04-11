@@ -6,7 +6,7 @@ class CreateFileobjects < ActiveRecord::Migration[5.2]
       t.string :material
       t.datetime :created_date
       t.datetime :modified_date
-      t.string :file_name
+      t.string :file
       t.string :file_type
       t.string :alias_name
       t.string :status
@@ -18,8 +18,6 @@ class CreateFileobjects < ActiveRecord::Migration[5.2]
       t.string :caption
       t.text :description
       t.string :flickr_photoid
-      t.string :attachment
-
       t.timestamps
     end
   end

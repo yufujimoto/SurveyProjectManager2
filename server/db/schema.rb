@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_024118) do
     t.string "material"
     t.datetime "created_date"
     t.datetime "modified_date"
-    t.string "file_name"
+    t.string "file"
     t.string "file_type"
     t.string "alias_name"
     t.string "status"
@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 2019_04_10_024118) do
     t.string "caption"
     t.text "description"
     t.string "flickr_photoid"
-    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "file"
   end
 
   create_table "projects", force: :cascade do |t|

@@ -1,61 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Fileobjects</h1>
+<h1>Files</h1>
+<hr />
+<%= button_to 'New File', new_fileobject_path, {method: :get, :class => "btn btn-success", :style => "width: 150px; border-radius: 0 !important;"} %>
+<hr />
 
 <table>
   <thead>
     <tr>
-      <th>Uuid</th>
-      <th>Consolidation</th>
-      <th>Material</th>
-      <th>Created date</th>
-      <th>Modified date</th>
-      <th>File name</th>
-      <th>File type</th>
-      <th>Alias name</th>
-      <th>Status</th>
-      <th>Make public</th>
-      <th>Is locked</th>
-      <th>Source</th>
-      <th>File operation</th>
-      <th>Operating application</th>
-      <th>Caption</th>
-      <th>Description</th>
-      <th>Flickr photoid</th>
-      <th>Attachment</th>
-      <th colspan="3"></th>
+      <th style="width: 100px">Modified</th>
+      <th style="width: 200px">Name</th>
+      <th style="width: 200px">Alias</th>
+      <th style="width: 200px">Type</th>
+      <th style="width: 200px">Status</th>
+      <th style="width: 100px">Public</th>
+      <th style="width: auto"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @fileobjects.each do |fileobject| %>
-      <tr>
-        <td><%= fileobject.uuid %></td>
-        <td><%= fileobject.consolidation %></td>
-        <td><%= fileobject.material %></td>
-        <td><%= fileobject.created_date %></td>
+      <tr class="zebra">
         <td><%= fileobject.modified_date %></td>
-        <td><%= fileobject.file_name %></td>
-        <td><%= fileobject.file_type %></td>
+        <td><%= fileobject.file %></td>
         <td><%= fileobject.alias_name %></td>
+        <td><%= fileobject.file_type %></td>
         <td><%= fileobject.status %></td>
         <td><%= fileobject.make_public %></td>
-        <td><%= fileobject.is_locked %></td>
-        <td><%= fileobject.source %></td>
-        <td><%= fileobject.file_operation %></td>
-        <td><%= fileobject.operating_application %></td>
-        <td><%= fileobject.caption %></td>
-        <td><%= fileobject.description %></td>
-        <td><%= fileobject.flickr_photoid %></td>
-        <td><%= fileobject.attachment %></td>
-        <td><%= link_to 'Show', fileobject %></td>
-        <td><%= link_to 'Edit', edit_fileobject_path(fileobject) %></td>
-        <td><%= link_to 'Destroy', fileobject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><div class="btn-group">
+          <%= button_to 'Show', fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;"} %>
+          <%= button_to 'Edit', edit_fileobject_path(fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;"} %>
+          <%= button_to 'Delete', fileobject, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "width: 90px; border-radius: 0 !important;" %>
+        </div></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Fileobject', new_fileobject_path %>

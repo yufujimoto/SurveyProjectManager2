@@ -1,6 +1,10 @@
-<h1>Editing Fileobject</h1>
+<h2>Editing File</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Show', @fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;"} %>
+</div>
+<hr />
 
 <%= render 'form', fileobject: @fileobject %>
 
-<%= link_to 'Show', @fileobject %> |
-<%= link_to 'Back', fileobjects_path %>

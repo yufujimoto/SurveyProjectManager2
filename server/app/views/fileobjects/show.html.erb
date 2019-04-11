@@ -1,94 +1,36 @@
-<p id="notice"><%= notice %></p>
+<h2>File</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Edit', edit_fileobject_path(@fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;"} %>
+</div>
+<hr />
 
-<p>
-  <strong>Uuid:</strong>
-  <%= @fileobject.uuid %>
-</p>
+<div class="row">
+  <div class="col-sm-6" style="text-align: center; vertical-align: middle">
+    <%= image_tag(@fileobject.file.url, :height => "300px", :width => "550px") %>
+  </div>
+  
+  <div class="col-sm-6">
+    <p><strong>Uuid:</strong><%= @fileobject.uuid %></p>
+    <p><strong>Consolidation:</strong><%= @fileobject.consolidation %></p>
+    <p><strong>Material:</strong><%= @fileobject.material %></p>
+    <p><strong>Created date:</strong><%= @fileobject.created_date %></p>
+    <p><strong>Modified date:</strong><%= @fileobject.modified_date %></p>
+    <p><strong>File name:</strong><%= @fileobject.file %></p>
+    <p><strong>File type:</strong><%= @fileobject.file_type %></p>
+    <p><strong>Alias name:</strong><%= @fileobject.alias_name %></p>
+    <p><strong>Status:</strong><%= @fileobject.status %></p>
+    <p><strong>Make public:</strong><%= @fileobject.make_public %></p>
+    <p><strong>Is locked:</strong><%= @fileobject.is_locked %></p>
+    <p><strong>Source:</strong><%= @fileobject.source %></p>
+    <p><strong>File operation:</strong><%= @fileobject.file_operation %></p>
+    <p><strong>Operating application:</strong><%= @fileobject.operating_application %></p>
+    <p><strong>Caption:</strong><%= @fileobject.caption %></p>
+    <p><strong>Description:</strong><%= @fileobject.description %></p>
+    <p><strong>Flickr photoid:</strong><%= @fileobject.flickr_photoid %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Consolidation:</strong>
-  <%= @fileobject.consolidation %>
-</p>
 
-<p>
-  <strong>Material:</strong>
-  <%= @fileobject.material %>
-</p>
 
-<p>
-  <strong>Created date:</strong>
-  <%= @fileobject.created_date %>
-</p>
-
-<p>
-  <strong>Modified date:</strong>
-  <%= @fileobject.modified_date %>
-</p>
-
-<p>
-  <strong>File name:</strong>
-  <%= @fileobject.file_name %>
-</p>
-
-<p>
-  <strong>File type:</strong>
-  <%= @fileobject.file_type %>
-</p>
-
-<p>
-  <strong>Alias name:</strong>
-  <%= @fileobject.alias_name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @fileobject.status %>
-</p>
-
-<p>
-  <strong>Make public:</strong>
-  <%= @fileobject.make_public %>
-</p>
-
-<p>
-  <strong>Is locked:</strong>
-  <%= @fileobject.is_locked %>
-</p>
-
-<p>
-  <strong>Source:</strong>
-  <%= @fileobject.source %>
-</p>
-
-<p>
-  <strong>File operation:</strong>
-  <%= @fileobject.file_operation %>
-</p>
-
-<p>
-  <strong>Operating application:</strong>
-  <%= @fileobject.operating_application %>
-</p>
-
-<p>
-  <strong>Caption:</strong>
-  <%= @fileobject.caption %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @fileobject.description %>
-</p>
-
-<p>
-  <strong>Flickr photoid:</strong>
-  <%= @fileobject.flickr_photoid %>
-</p>
-
-<p>
-  <strong>File:</strong>
-  <%= image_tag @fileobject.file.url %>
-</p>
-
-<%= link_to 'Edit', edit_fileobject_path(@fileobject) %> |
-<%= link_to 'Back', fileobjects_path %>

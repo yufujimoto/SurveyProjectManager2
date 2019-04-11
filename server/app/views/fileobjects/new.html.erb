@@ -1,5 +1,8 @@
-<h1>New Fileobject</h1>
+<h2>New File</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+</div>
+<hr />
 
 <%= render 'form', fileobject: @fileobject %>
-
-<%= link_to 'Back', fileobjects_path %>

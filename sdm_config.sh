@@ -36,7 +36,7 @@ rails g migration addCoverToProject cover:string
 rails db:migrate
 
 rails g scaffold Consolidation uuid:string name:string geographic_annotation:string temporal_annotation:string description:text flickr_photosetid:string project:string
-rails g scaffold Fileobject uuid:string consolidation:string material:string created_date:datetime modified_date:datetime file_name:string file_type:string alias_name:string status:string make_public:boolean is_locked:boolean source:string file_operation:string operating_application:string caption:string description:text flickr_photoid:string attachment:string
+rails g scaffold Fileobject uuid:string consolidation:string material:string created_date:datetime modified_date:datetime file:string file_type:string alias_name:string status:string make_public:boolean is_locked:boolean source:string file_operation:string operating_application:string caption:string description:text flickr_photoid:string
 
 
 # Migrate the db
