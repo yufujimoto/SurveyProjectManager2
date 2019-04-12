@@ -1,10 +1,57 @@
-<p><strong>Uuid:</strong><%= @consolidation.uuid %></p>
-<p><strong>Name:</strong><%= @consolidation.name %></p>
-<p><strong>Geographic annotation:</strong><%= @consolidation.geographic_annotation %></p>
-<p><strong>Temporal annotation:</strong><%= @consolidation.temporal_annotation %></p>
-<p><strong>Description:</strong><%= @consolidation.description %></p>
-<p><strong>Flickr photosetid:</strong><%= @consolidation.flickr_photosetid %></p>
-<p><strong>Project:</strong><%= @consolidation.project %></p>
+<h2><%= @consolidation.name %></h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', project_url(:id => params[:lid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Edit', edit_consolidation_path(@consolidation), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+</div>
+<hr />
 
-<%= link_to 'Edit', edit_consolidation_path(@consolidation, params: {uuid: params[:project], lid: params[:lid]}) %> |
-<%= link_to 'Back', project_url(:id => params[:lid]) %></td>
+<div class="row">
+  <div class="col-sm-12">
+    <p><strong>Uuid:</strong><%= @consolidation.uuid %></p>
+    <p><strong>Geographic annotation:</strong><%= @consolidation.geographic_annotation %></p>
+    <p><strong>Temporal annotation:</strong><%= @consolidation.temporal_annotation %></p>
+    <p><strong>Description:</strong><%= @consolidation.description %></p>
+    <p><strong>Flickr photosetid:</strong><%= @consolidation.flickr_photosetid %></p>
+    <p><strong>Project:</strong><%= @consolidation.project %></p>
+  </div>
+</div>
+
+  <hr />
+  <h3>Files</h3>
+  <hr />
+  <%= button_to 'New File', new_fileobject_path, {method: :get, :class => "btn btn-success", :style => "width: 150px; border-radius: 0 !important;", params: {type: "consolidation", uuid: @consolidation.uuid, cid: @consolidation.id, pid: params[:lid]}} %>
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 100px">Modified</th>
+        <th style="width: 200px">Name</th>
+        <th style="width: 200px">Alias</th>
+        <th style="width: 200px">Type</th>
+        <th style="width: 200px">Status</th>
+        <th style="width: 100px">Public</th>
+        <th style="width: auto"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @fileobjects.each do |fileobject| %>
+        <tr class="zebra">
+          <td><%= fileobject.modified_date %></td>
+          <td><%= fileobject.file %></td>
+          <td><%= fileobject.alias_name %></td>
+          <td><%= fileobject.file_type %></td>
+          <td><%= fileobject.status %></td>
+          <td><%= fileobject.make_public %></td>
+          <td><div class="btn-group">
+            <%= button_to 'Show', fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} %>
+            <%= button_to 'Edit', edit_fileobject_path(fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} %>
+            <%= button_to 'Delete', fileobject, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "width: 90px; border-radius: 0 !important;" %>
+          </div></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+

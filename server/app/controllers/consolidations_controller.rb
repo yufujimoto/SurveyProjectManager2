@@ -10,12 +10,14 @@ class ConsolidationsController < ApplicationController
   # GET /consolidations/1
   # GET /consolidations/1.json
   def show
+    @fileobjects = Fileobject.where(consolidation: @consolidation.uuid)
   end
 
   # GET /consolidations/new
   def new
     @consolidation = Consolidation.new
     @consolidation.uuid = SecureRandom.uuid
+    @consolidation.project = params[:project]
   end
 
   # GET /consolidations/1/edit

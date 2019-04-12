@@ -1,7 +1,9 @@
 <h2>New File</h2>
 <hr />
 <div class="btn-group">
-  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <% if params[:type] == "consolidation" %>
+    <%= button_to 'Back', consolidation_url(:id => params[:cid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;", params: {:lid => params[:pid]}} %>
+  <% end %>
 </div>
 <hr />
 

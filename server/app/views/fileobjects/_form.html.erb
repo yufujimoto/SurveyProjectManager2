@@ -15,9 +15,15 @@
     <tr>
       <td colspan="2">
         <div class="field" style="text-align: center">
-          <%= image_tag(@fileobject.file.url, :height => "300px") %> <br />
-          <%= form.file_field :file %>
-          <%= form.hidden_field :file_cache %>
+          <% if @fileobject.file.url != nil %>
+            <%= image_tag(@fileobject.file.url, :height => "300px") %> <br />
+            <%= form.file_field :file %>
+            <%= form.hidden_field :file_cache %>
+          <% else %>
+            <img src=<%= image_url('noimage.jpg') %> height="300px" width="550px" /> <br />
+            <%= form.file_field :file %>
+            <%= form.hidden_field :file_cache %>
+          <% end %>
         </div>
       </td>
     </tr>
@@ -25,8 +31,8 @@
       <th style="width: 150px"><%= form.label :uuid %></th>
       <td style="width: 300px"><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td>
     </tr>
-    <tr><th><%= form.label :consolidation %></th><td style="width: 300px"><%= form.text_field :consolidation, :class => "text_field" %></td></tr>
-    <tr><th><%= form.label :material %></th><td style="width: 300px"><%= form.text_field :material, :class => "text_field" %></td></tr>
+    <tr><th><%= form.label :consolidation %></th><td style="width: 300px"><%= form.text_field :consolidation, :class => "text_field", :readonly => true %></td></tr>
+    <tr><th><%= form.label :material %></th><td style="width: 300px"><%= form.text_field :material, :class => "text_field", :readonly => true %></td></tr>
     <tr><th><%= form.label :created_date %></th><td style="width: 300px"><%= form.date_select :created_date %></td></tr>
     <tr><th><%= form.label :modified_date %></th><td style="width: 300px"><%= form.date_select :modified_date %></td></tr>
     <tr><th><%= form.label :alias_name %></th><td style="width: 300px"><%= form.text_field :alias_name, :class => "text_field"%></td></tr>

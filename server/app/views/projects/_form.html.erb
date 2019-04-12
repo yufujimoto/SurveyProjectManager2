@@ -13,7 +13,21 @@
   
   <table>
     <tr>
-      <td rowspan="8"></td>
+      <td colspan="2">
+        <div class="field" style="text-align: center">
+          <% if @project.cover.url %>
+            <%= image_tag(@project.cover.url, :height => "300px") %> <br />
+            <%= form.file_field :cover %>
+            <%= form.hidden_field :cover_cache %>
+          <% else %>
+            <img src=<%= image_url('noimage.jpg') %> height="300px" width="550px" /> <br />
+            <%= form.file_field :cover %>
+            <%= form.hidden_field :cover_cache %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr>
       <th style="width: 150px"><%= form.label :uuid %></th>
       <td style="width: 300px"><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td>
     </tr>
@@ -25,14 +39,6 @@
     <tr><th><%= form.label :introduction %></th><td style="width: 300px"><%= form.text_area :introduction, :class => "text_field" %></td></tr>
     <tr><th><%= form.label :cause %></th><td style="width: 300px"><%= form.text_area :cause, :class => "text_field" %></td></tr>
     <tr>
-      <td>
-        <div class="field">
-          <%= image_tag @project.cover.url if @project.cover? %>
-          <%= form.label :cover %>
-          <%= form.file_field :cover %>
-          <%= form.hidden_field :cover_cache %>
-        </div>
-      </td>
       <th><%= form.label :created_by %></th><td style="width: 300px"><%= form.text_field :created_by, :class => "text_field",:value => current_user.username %></td></tr>
   </table>
 

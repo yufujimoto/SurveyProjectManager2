@@ -21,7 +21,11 @@
     <% @projects.each do |project| %>
       <tr class="zebra">
         <td>
-          <%= image_tag(project.cover.url, :width => "99px", :height => "66px") %>
+          <% if project.cover.url != nil %>
+            <%= image_tag(project.cover.url, :width => "99px", :height => "66px") %>
+          <% else %>
+            <img src=<%= image_url('noimage.jpg') %> width="99px" height="66px" />
+           <% end %>
         </td>
         <td><%= project.name %></td>
         <td><%= project.title %></td>

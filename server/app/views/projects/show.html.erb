@@ -8,7 +8,11 @@
 
 <div class="row">
   <div class="col-sm-6" style="text-align: center; vertical-align: middle">
-    <%= image_tag(@project.cover.url, :height => "300px", :width => "550px") %>
+    <% if @project.cover.url != nil %>
+     <%= image_tag(@project.cover.url, :height => "300px", :width => "550px") %>
+    <% else %>
+     <img src=<%= image_url('noimage.jpg') %> height="300px" width="550px" />
+    <% end %>
   </div>
   
   <div class="col-sm-6">

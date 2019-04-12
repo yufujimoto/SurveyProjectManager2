@@ -1,6 +1,10 @@
-<h1>Editing Project</h1>
+<h2>Editing Project</h2>
+<hr />
+<div class="btn-group">
+  <%= button_to 'Back', projects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <%= button_to 'Show', @project, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;"} %>
+</div>
+<hr />
 
 <%= render 'form', project: @project %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>

@@ -1,8 +1,10 @@
 <h2>File</h2>
 <hr />
 <div class="btn-group">
-  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
-  <%= button_to 'Edit', edit_fileobject_path(@fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <% if params[:type] == "consolidation" %>
+    <%= button_to 'Back', consolidation_url(:id => params[:cid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;", params: {:lid => params[:pid]}} %>
+    <%= button_to 'Edit', edit_fileobject_path(@fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {type: params[:type], cid: params[:cid], pid: params[:pid]}} %>
+  <% end %>
 </div>
 <hr />
 

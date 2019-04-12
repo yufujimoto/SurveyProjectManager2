@@ -1,10 +1,13 @@
 <h2>Editing File</h2>
 <hr />
 <div class="btn-group">
-  <%= button_to 'Back', fileobjects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
-  <%= button_to 'Show', @fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;"} %>
+  <% if params[:type] == "consolidation" %>
+    <%= button_to 'Back', consolidation_url(:id => params[:cid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;", params: {:lid => params[:pid]}} %>
+    <%= button_to 'Show', @fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {type: params[:type], cid: params[:cid], pid: params[:lid]}} %>
+  <% end %>
 </div>
 <hr />
 
 <%= render 'form', fileobject: @fileobject %>
+
 

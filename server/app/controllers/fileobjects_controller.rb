@@ -16,10 +16,16 @@ class FileobjectsController < ApplicationController
   def new
     @fileobject = Fileobject.new
     @fileobject.uuid = SecureRandom.uuid
+    
+    if params[:type] == "consolidation"
+      @fileobject.consolidation = params[:uuid]
+    end
+    
   end
 
   # GET /fileobjects/1/edit
   def edit
+    
   end
 
   # POST /fileobjects
@@ -27,6 +33,7 @@ class FileobjectsController < ApplicationController
   def create
     @fileobject = Fileobject.new(fileobject_params)
     
+    # Get the file uploaded file url.
     file = @fileobject.file.url
     
     if file != nil
@@ -34,12 +41,30 @@ class FileobjectsController < ApplicationController
       
       if %w{jpg png gif bmp jpeg tif tiff}.include?(extension)
         @fileobject.file_type = "Image"
+      elsif %w{wave mp3}.include?(extension)
+        @fileobject.file_type = "Sound"
+      end
+      
+      cid = @fileobject.consolidation
+      mid = @fileobject.material
+      
+      if mid != ""
+        parent = "material"
+      elsif cid != ""
+        parent = "consolidation"
       end
       
       respond_to do |format|
         if @fileobject.save
-          format.html { redirect_to @fileobject, notice: 'Fileobject was successfully created.' }
-          format.json { render :show, status: :created, location: @fileobject }
+          if parent == "consolidation"
+            consolidation = Consolidation.where(uuid: cid).first
+            prj_uuid = consolidation.project
+            project = Project.where(uuid: prj_uuid).first
+            prj_id = project.id
+            
+            format.html { redirect_to consolidation_url(consolidation, params: {:lid => prj_id}), notice: 'File was successfully created.'}
+            format.json { render :show, status: :created, location: @fileobject }
+          end
         else
           format.html { render :new }
           format.json { render json: @fileobject.errors, status: :unprocessable_entity }
