@@ -1,6 +1,17 @@
-<h2>New Project</h2>
+<h2>
+ <img src=<%= image_url('icons/ic_account_balance_black_48dp.png') %> />
+ New Project
+</h2>
 <hr />
-<%= button_to 'Back', projects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
+<%=
+  button_to 'Back',
+  projects_path,
+  {
+    method: :get,
+    :class => "btn btn-secondary",
+    :style => "width: 90px; border-radius: 0 !important;"
+  }
+%>
 <hr />
 
 <%= render 'form', project: @project %>

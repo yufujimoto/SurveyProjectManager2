@@ -48,6 +48,10 @@
   </table>
 
   <div class="actions" style="text-align: right">
+    <%= form.hidden_field :mid, :value => params[:mid] %>
+    <%= form.hidden_field :cid, :value => params[:cid] %>
+    <%= form.hidden_field :pid, :value => params[:pid] %>
+    <%= form.hidden_field :type, :value => params[:type] %>
     <%= form.submit %>
   </div>
 <% end %>

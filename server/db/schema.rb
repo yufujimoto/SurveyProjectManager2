@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_024118) do
+ActiveRecord::Schema.define(version: 2019_04_21_051923) do
 
   create_table "consolidations", force: :cascade do |t|
     t.string "uuid"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2019_04_10_024118) do
     t.string "caption"
     t.text "description"
     t.string "flickr_photoid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "uuid"
+    t.string "consolidation"
+    t.string "name"
+    t.string "material_number"
+    t.string "estimated_period_beginning"
+    t.string "estimated_period_peak"
+    t.string "estimated_period_ending"
+    t.float "latitude"
+    t.float "longitude"
+    t.float "altitude"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

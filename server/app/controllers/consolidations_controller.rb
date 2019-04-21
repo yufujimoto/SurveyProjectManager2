@@ -1,6 +1,8 @@
 class ConsolidationsController < ApplicationController
   before_action :set_consolidation, only: [:show, :edit, :update, :destroy]
-
+  
+  PER = 10
+  
   # GET /consolidations
   # GET /consolidations.json
   def index
@@ -10,7 +12,8 @@ class ConsolidationsController < ApplicationController
   # GET /consolidations/1
   # GET /consolidations/1.json
   def show
-    @fileobjects = Fileobject.where(consolidation: @consolidation.uuid)
+    @fileobjects = Fileobject.where(consolidation: @consolidation.uuid).page(params[:page]).per(PER)
+    @materials = Material.where(consolidation: @consolidation.uuid).page(params[:page]).per(PER)
   end
 
   # GET /consolidations/new
@@ -63,6 +66,16 @@ class ConsolidationsController < ApplicationController
   # DELETE /consolidations/1
   # DELETE /consolidations/1.json
   def destroy
+    materials = Material.where(consolidation: @consolidation.uuid)
+    materials.each do |material|
+      material.destroy
+    end
+    
+    fileobjects = Fileobject.where(consolidation: @consolidation.uuid)
+    fileobjects.each do |fileobject|
+      fileobject.destroy
+    end
+    
     @consolidation.destroy
     respond_to do |format|
       prj_uuid = @consolidation.project

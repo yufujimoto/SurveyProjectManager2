@@ -1,16 +1,18 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  
+  PER = 10
+  
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.page(params[:page]).per(PER)
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @consolidations = Consolidation.where(project: @project.uuid)
+    @consolidations = Consolidation.where(project: @project.uuid).page(params[:page]).per(PER)
   end
 
   # GET /projects/new

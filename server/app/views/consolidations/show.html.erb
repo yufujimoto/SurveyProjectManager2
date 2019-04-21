@@ -6,7 +6,7 @@
 <div class="btn-group">
  <%= button_to project_url(:id => params[:lid]),
   {method: :get, :class => "btn btn-secondary",
-   :style => "width: 90px; border-radius: 0 !important;"} do %>
+   :style => "width: 90px; border-radius: 0 !important;"} do%>
   <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
  <% end %>
  <%= button_to edit_consolidation_path(@consolidation),
@@ -29,60 +29,161 @@
   </div>
 </div>
 
-  <hr />
-  <h3>
-    <img src=<%= image_url('icons/ic_my_library_books_black_36dp.png') %> />Files
-  </h3>
-  <hr />
-  <%= button_to 'New File', new_fileobject_path, {method: :get, :class => "btn btn-success", :style => "width: 150px; border-radius: 0 !important;", params: {type: "consolidation", uuid: @consolidation.uuid, cid: @consolidation.id, pid: params[:lid]}} %>
-  <hr />
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 100px">Modified</th>
-        <th style="width: 200px">Name</th>
-        <th style="width: 200px">Alias</th>
-        <th style="width: 200px">Type</th>
-        <th style="width: 200px">Status</th>
-        <th style="width: 100px">Public</th>
-        <th style="width: auto"></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @fileobjects.each do |fileobject| %>
-        <tr class="zebra">
-          <td><%= fileobject.modified_date %></td>
-          <td><%= fileobject.file %></td>
-          <td><%= fileobject.alias_name %></td>
-          <td><%= fileobject.file_type %></td>
-          <td><%= fileobject.status %></td>
-          <td><%= fileobject.make_public %></td>
-          <td>
-            <div class="btn-group">
-            <%= button_to fileobject,
-             {method: :get, :class => "btn btn-primary",
+<div class="row">
+  <div class="col-sm-12">
+   <hr />
+   <h3>
+     <img src=<%= image_url('icons/ic_my_library_books_black_36dp.png') %> />Files
+   </h3>
+   <hr />
+   <%=
+    button_to 'New File',
+    new_fileobject_path,
+    {
+     method: :get,
+     :class => "btn btn-success",
+     :style => "width: 150px; border-radius: 0 !important;",
+     params: {
+      type: "consolidation",
+      consolidation: @consolidation.uuid,
+      cid: @consolidation.id,
+      pid: params[:lid]
+      }
+     }
+    %>
+   <hr />
+   
+   <div><%= paginate @fileobjects %></div>
+   
+   <table>
+     <thead>
+       <tr>
+         <th style="width: 100px">Modified</th>
+         <th style="width: 200px">Name</th>
+         <th style="width: 200px">Alias</th>
+         <th style="width: 200px">Type</th>
+         <th style="width: 200px">Status</th>
+         <th style="width: 100px">Public</th>
+         <th style="width: auto"></th>
+       </tr>
+     </thead>
+     
+     <tbody>
+       <% @fileobjects.each do |fileobject| %>
+         <tr class="zebra">
+           <td><%= fileobject.modified_date %></td>
+           <td><%= fileobject.file %></td>
+           <td><%= fileobject.alias_name %></td>
+           <td><%= fileobject.file_type %></td>
+           <td><%= fileobject.status %></td>
+           <td><%= fileobject.make_public %></td>
+           <td>
+             <div class="btn-group">
+             <%= button_to fileobject,
+              {method: :get, :class => "btn btn-primary",
+               :style => "width: 50px; border-radius: 0 !important;",
+               params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
+               <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+              <% end %>
+             <%= button_to edit_fileobject_path(fileobject),
+              {method: :get, :class => "btn btn-warning",
+               :style => "width: 50px; border-radius: 0 !important;",
+               params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
+               <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+              <% end %>
+             <%= button_to fileobject,
+              method: :delete, data: { confirm: 'Are you sure?' },
+              :class => "btn btn-danger",
               :style => "width: 50px; border-radius: 0 !important;",
-              params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
-              <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+              params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]} do %>
+              <img src=<%= image_url('icons/ic_delete_white_18dp.png') %>/>
              <% end %>
-            <%= button_to edit_fileobject_path(fileobject),
-             {method: :get, :class => "btn btn-warning",
-              :style => "width: 50px; border-radius: 0 !important;",
-              params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
-              <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
-             <% end %>
-            <%= button_to fileobject,
-             method: :delete, data: { confirm: 'Are you sure?' },
-             :class => "btn btn-danger",
-             :style => "width: 50px; border-radius: 0 !important;" do %>
-             <img src=<%= image_url('icons/ic_delete_white_18dp.png') %>/>
-            <% end %>
-           </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+            </div>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+  </div>
+</div>
 
+
+<div class="row">
+  <div class="col-sm-12">
+   <hr />
+   <h3>
+     <img src=<%= image_url('icons/ic_filter_none_black_36dp.png') %> />Materials
+   </h3>
+   <hr />
+   <%=
+    button_to 'New Material',
+    new_material_path,
+    {
+     method: :get,
+     :class => "btn btn-success",
+     :style => "width: 150px; border-radius: 0 !important;",
+     params: {
+      consolidation: @consolidation.uuid,
+      cid: @consolidation.id,
+      pid: params[:lid]
+      }
+     }
+    %>
+   <hr />
+   
+   <div><%= paginate @materials %></div>
+   
+   <table>
+     <thead>
+       <tr>
+         <th style="width: 200px">Name</th>
+         <th style="width: 200px">Material number</th>
+         <th style="width: 100px">Beginning</th>
+         <th style="width: 100px">Peak</th>
+         <th style="width: 100px">Ending</th>
+         <th style="width: 100px">Latitude</th>
+         <th style="width: 100px">Longitude</th>
+         <th style="width: 100px">Altitude</th>
+       </tr>
+     </thead>
+     
+     <tbody>
+       <% @materials.each do |material| %>
+         <tr class="zebra">
+           <td><%= material.name %></td>
+           <td><%= material.material_number %></td>
+           <td><%= material.estimated_period_beginning %></td>
+           <td><%= material.estimated_period_peak %></td>
+           <td><%= material.estimated_period_ending %></td>
+           <td><%= material.latitude %></td>
+           <td><%= material.longitude %></td>
+           <td><%= material.altitude %></td>
+           <td>
+             <div class="btn-group">
+             <%= button_to material,
+              {method: :get, :class => "btn btn-primary",
+               :style => "width: 50px; border-radius: 0 !important;",
+               params: {cid: @consolidation.id, pid: params[:lid]}} do %>
+               <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+              <% end %>
+             <%= button_to edit_material_path(material),
+              {method: :get, :class => "btn btn-warning",
+               :style => "width: 50px; border-radius: 0 !important;",
+               params: {cid: @consolidation.id, pid: params[:lid]}} do %>
+               <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+              <% end %>
+             <%= button_to material,
+              method: :delete, data: { confirm: 'Are you sure?' },
+              :class => "btn btn-danger",
+              :style => "width: 50px; border-radius: 0 !important;",
+              params: {cid: @consolidation.id, pid: params[:lid]} do %>
+              <img src=<%= image_url('icons/ic_delete_white_18dp.png') %>/>
+             <% end %>
+            </div>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+  </div>
+</div>

@@ -1,20 +1,20 @@
 <h2>
- <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
- New Consolidation
+  <img src=<%= image_url('icons/ic_filter_none_black_48dp.png') %> />
+  New Material
 </h2>
 <hr />
 <div class="btn-group">
   <%=
-    button_to project_url(:id => params[:lid]),
+    button_to consolidation_url(:id => params[:cid]),
     {
       method: :get, :class => "btn btn-secondary",
       :style => "width: 90px; border-radius: 0 !important;",
+      params: {:lid => params[:pid]}
     } do %>
         <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
   <% end %>
 </div>
 <hr />
 
-<%= render 'form', consolidation: @consolidation %>
-
+<%= render 'form', material: @material %>
 

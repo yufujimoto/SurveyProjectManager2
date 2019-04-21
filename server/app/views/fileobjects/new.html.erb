@@ -1,10 +1,35 @@
-<h2>New File</h2>
+<h2>
+  <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
+  New File
+</h2>
 <hr />
 <div class="btn-group">
   <% if params[:type] == "consolidation" %>
-    <%= button_to 'Back', consolidation_url(:id => params[:cid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;", params: {:lid => params[:pid]}} %>
+    <%=
+      button_to consolidation_url(:id => params[:cid]),
+      {
+        method: :get, :class => "btn btn-secondary",
+        :style => "width: 90px; border-radius: 0 !important;",
+        params: {:lid => params[:pid]}
+      } do %>
+          <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+    <% end %>
+  <% elsif params[:type] == "material" %>
+    <%=
+      button_to material_url(:id => params[:mid]),
+      {
+        method: :get, :class => "btn btn-secondary",
+        :style => "width: 90px; border-radius: 0 !important;",
+        params: {:cid => params[:cid], :lid => params[:pid]}
+      } do %>
+          <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+    <% end %>
   <% end %>
 </div>
 <hr />
 
 <%= render 'form', fileobject: @fileobject %>
+
+
+
+  

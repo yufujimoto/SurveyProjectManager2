@@ -1,0 +1,38 @@
+<%= form_with(model: material, local: true) do |form| %>
+  <% if material.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
+
+      <ul>
+      <% material.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <table>
+          <tr>
+            <th style="width: 150px"><%= form.label :uuid %></th>
+            <td  style="width: 300px"><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td></tr>
+          <tr><th><%= form.label :consolidation %></th><td style="width: 300px"><%= form.text_field :consolidation, :class => "text_field", :readonly => true  %></td></tr>
+          <tr><th><%= form.label :name %></th><td style="width: 300px"><%= form.text_field :name, :class => "text_field" %></td></tr>
+          <tr><th><%= form.label :material_number %></th><td style="width: 300px"><%= form.text_field :material_number, :class => "text_field" %></td></tr>
+          <tr><th><%= form.label :estimated_period_beginning %></th><td style="width: 300px"><%= form.date_field :estimated_period_beginning, :class => "text_field" %></td></tr>
+          <tr><th><%= form.label :estimated_period_peak %></th><td style="width: 300px"><%= form.date_field :estimated_period_peak, :class => "text_field" %></td></tr>
+          <tr><th><%= form.label :estimated_period_ending %></th><td style="width: 300px"><%= form.date_field :estimated_period_ending, :class => "text_field" %></td></tr>
+          <tr><th><%= form.label :latitude %></th><td style="width: 300px"><%= form.number_field :latitude, :class => "text_field", :step => "0.0000001" %></td></tr>
+          <tr><th><%= form.label :longitude %></th><td style="width: 300px"><%= form.number_field :longitude, :class => "text_field", :step => "0.0000001" %></td></tr>
+          <tr><th><%= form.label :altitude %></th><td style="width: 300px"><%= form.number_field :altitude, :class => "text_field", :step => "0.0000001" %></td></tr>
+          <tr><th><%= form.label :description %></th><td style="width: 300px"><%= form.text_area :description, :class => "text_field" %></td></tr>
+        </table>
+        <div class="actions" style="text-align: right">
+          <%= form.hidden_field :cid, :value => params[:cid] %>
+          <%= form.hidden_field :pid, :value => params[:pid] %>
+          <%= form.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>

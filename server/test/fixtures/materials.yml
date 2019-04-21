@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  consolidation: MyString
+  name: MyString
+  material_number: MyString
+  estimated_period_beginning: MyString
+  estimated_period_peak: MyString
+  estimated_period_ending: MyString
+  latitude: 1.5
+  longitude: 1.5
+  altitude: 1.5
+  description: MyString
+
+two:
+  uuid: MyString
+  consolidation: MyString
+  name: MyString
+  material_number: MyString
+  estimated_period_beginning: MyString
+  estimated_period_peak: MyString
+  estimated_period_ending: MyString
+  latitude: 1.5
+  longitude: 1.5
+  altitude: 1.5
+  description: MyString
