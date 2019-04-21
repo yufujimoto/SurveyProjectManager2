@@ -72,4 +72,3 @@ end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'carrierwave'   
-gem 'bootstrap-sass'  

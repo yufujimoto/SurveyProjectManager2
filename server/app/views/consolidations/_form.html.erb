@@ -12,12 +12,11 @@
   <% end %>
   
   <div class="row">
-    <div class="col-sm-6">
-      
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <table>
-        <tr><th><%= form.label :uuid %></th><td><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td></tr>
+        <tr>
+          <th style="width: 150px"><%= form.label :uuid %></th>
+          <td  style="width: 300px"><%= form.text_field :uuid, :class => "text_field", :readonly => true %></td></tr>
         <tr><th><%= form.label :project %></th><td style="width: 300px"><%= form.text_field :project, :class => "text_field", :readonly => true  %></td></tr>
         <tr><th><%= form.label :name %></th><td style="width: 300px"><%= form.text_field :name, :class => "text_field" %></td></tr>
         <tr><th><%= form.label :geographic_annotation %></th><td style="width: 300px"><%= form.text_field :geographic_annotation, :class => "text_field" %></td></tr>

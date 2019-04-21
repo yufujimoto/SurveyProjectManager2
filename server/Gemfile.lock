@@ -70,9 +70,6 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    carrierwave-magic (0.0.4)
-      carrierwave
-      ruby-filemagic
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.1)
@@ -178,7 +175,6 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-    ruby-filemagic (0.7.2)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.4)
@@ -243,7 +239,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave
-  carrierwave-magic
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise

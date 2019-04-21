@@ -20,8 +20,9 @@
       <div class="header">
         <% if user_signed_in? %>
           <p>
-            <%= link_to "User", edit_user_registration_path, method: :get %> | 
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to root_path, :class => "linkage" do %><img src=<%= image_url('icons/ic_home_black_18dp.png') %>/> Home <% end %>
+            <%= link_to edit_user_registration_path, method: :get, :class => "linkage" do %><img src=<%= image_url('icons/ic_account_circle_black_18dp.png') %>/> User <% end %> 
+            <%= link_to destroy_user_session_path, method: :delete, :class => "linkage" do %><img src=<%= image_url('icons/ic_lock_black_18dp.png') %>/> Logout <% end %>
           </p>
         <% end %>
       </div>

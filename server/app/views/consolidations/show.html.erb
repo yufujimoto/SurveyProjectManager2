@@ -1,8 +1,20 @@
-<h2><%= @consolidation.name %></h2>
+<h2>
+ <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
+ Consolidation: <%= @consolidation.name %>
+</h2>
 <hr />
 <div class="btn-group">
-  <%= button_to 'Back', project_url(:id => params[:lid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
-  <%= button_to 'Edit', edit_consolidation_path(@consolidation), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+ <%= button_to project_url(:id => params[:lid]),
+  {method: :get, :class => "btn btn-secondary",
+   :style => "width: 90px; border-radius: 0 !important;"} do %>
+  <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+ <% end %>
+ <%= button_to edit_consolidation_path(@consolidation),
+  {method: :get, :class => "btn btn-warning",
+   :style => "width: 90px; border-radius: 0 !important;",
+   params: {uuid: params[:project], lid: params[:lid]}} do%>
+   <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+ <% end %>
 </div>
 <hr />
 
@@ -18,7 +30,9 @@
 </div>
 
   <hr />
-  <h3>Files</h3>
+  <h3>
+    <img src=<%= image_url('icons/ic_my_library_books_black_36dp.png') %> />Files
+  </h3>
   <hr />
   <%= button_to 'New File', new_fileobject_path, {method: :get, :class => "btn btn-success", :style => "width: 150px; border-radius: 0 !important;", params: {type: "consolidation", uuid: @consolidation.uuid, cid: @consolidation.id, pid: params[:lid]}} %>
   <hr />
@@ -45,11 +59,28 @@
           <td><%= fileobject.file_type %></td>
           <td><%= fileobject.status %></td>
           <td><%= fileobject.make_public %></td>
-          <td><div class="btn-group">
-            <%= button_to 'Show', fileobject, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} %>
-            <%= button_to 'Edit', edit_fileobject_path(fileobject), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} %>
-            <%= button_to 'Delete', fileobject, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "width: 90px; border-radius: 0 !important;" %>
-          </div></td>
+          <td>
+            <div class="btn-group">
+            <%= button_to fileobject,
+             {method: :get, :class => "btn btn-primary",
+              :style => "width: 50px; border-radius: 0 !important;",
+              params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
+              <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+             <% end %>
+            <%= button_to edit_fileobject_path(fileobject),
+             {method: :get, :class => "btn btn-warning",
+              :style => "width: 50px; border-radius: 0 !important;",
+              params: {type: "consolidation", cid: @consolidation.id, pid: params[:lid]}} do %>
+              <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+             <% end %>
+            <%= button_to fileobject,
+             method: :delete, data: { confirm: 'Are you sure?' },
+             :class => "btn btn-danger",
+             :style => "width: 50px; border-radius: 0 !important;" do %>
+             <img src=<%= image_url('icons/ic_delete_white_18dp.png') %>/>
+            <% end %>
+           </div>
+          </td>
         </tr>
       <% end %>
     </tbody>

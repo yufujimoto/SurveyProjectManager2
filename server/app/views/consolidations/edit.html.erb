@@ -1,8 +1,20 @@
-<h2>Editing Consolidation</h2>
-<hr />
+<h2>
+ <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
+ Editing Consolidation
+</h2>
+
 <div class="btn-group">
-  <%= button_to 'Back', project_url(:id => params[:lid]), {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
-  <%= button_to 'Show', consolidation_url(@consolidation), {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+ <%= button_to project_url(:id => params[:lid]),
+  {method: :get, :class => "btn btn-secondary",
+   :style => "width: 90px; border-radius: 0 !important;"} do %>
+  <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+ <% end %>
+ <%= button_to consolidation_url(@consolidation),
+  {method: :get, :class => "btn btn-primary",
+   :style => "width: 90px; border-radius: 0 !important;",
+   params: {uuid: params[:project], lid: params[:lid]}} do%>
+   <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+ <% end %>
 </div>
 <hr />
 

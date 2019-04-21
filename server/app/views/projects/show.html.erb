@@ -1,8 +1,20 @@
-<h2><%= @project.name %></h2>
+<h2>
+ <img src=<%= image_url('icons/ic_account_balance_black_48dp.png') %> />
+ Project: <%= @project.name %>
+</h2>
 <hr />
 <div class="btn-group">
-  <%= button_to 'Back', projects_path, {method: :get, :class => "btn btn-secondary", :style => "width: 90px; border-radius: 0 !important;"} %>
-  <%= button_to 'Edit', edit_project_path(@project), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {uuid: params[:project], lid: params[:lid]}} %>
+ <%= button_to projects_path,
+  {method: :get, :class => "btn btn-secondary",
+   :style => "width: 90px; border-radius: 0 !important;"} do %>
+  <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+ <% end %>
+ <%= button_to edit_project_path(@project),
+  {method: :get, :class => "btn btn-warning",
+   :style => "width: 90px; border-radius: 0 !important;",
+   params: {uuid: params[:project], lid: params[:lid]}} do%>
+   <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+ <% end %>
 </div>
 <hr />
 
@@ -29,10 +41,18 @@
 
 
 <hr />
-<h3>Consolidations</h3>
+<h3>
+ <img src=<%= image_url('icons/ic_inbox_black_36dp.png') %> />
+ Consolidations
+</h3>
 <hr />
 <div class="btn-group">
- <%= button_to 'New Consolidation', new_consolidation_path, {method: :get, :class => "btn btn-success", :style => "width: 200px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
+ <%= button_to new_consolidation_path,
+  {method: :get, :class => "btn btn-success",
+  :style => "width: 200px; border-radius: 0 !important;",
+  params: {project: @project.uuid, lid:@project.id}} do%>
+  <img src=<%= image_url('icons/ic_add_circle_outline_white_18dp.png') %>/> New Consolidation
+ <% end %>
 </div>
 <hr />
 <table>
@@ -55,9 +75,24 @@
         <td><%= consolidation.description %></td>
         <td>
          <div class="btn-group">
-          <%= button_to 'Show', consolidation, {method: :get, :class => "btn btn-primary", :style => "width: 90px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
-          <%= button_to 'Edit', edit_consolidation_path(consolidation), {method: :get, :class => "btn btn-warning", :style => "width: 90px; border-radius: 0 !important;", params: {project: @project.uuid, lid:@project.id}} %>
-          <%= button_to 'Delete', consolidation, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style => "width: 90px; border-radius: 0 !important;" %>
+          <%= button_to consolidation,
+           {method: :get, :class => "btn btn-primary",
+            :style => "width: 50px; border-radius: 0 !important;",
+            params: {project: @project.uuid, lid:@project.id}} do %>
+            <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+           <% end %>
+          <%= button_to edit_consolidation_path(consolidation),
+           {method: :get, :class => "btn btn-warning",
+            :style => "width: 50px; border-radius: 0 !important;",
+            params: {project: @project.uuid, lid:@project.id}} do %>
+            <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+           <% end %>
+          <%= button_to consolidation,
+           method: :delete, data: { confirm: 'Are you sure?' },
+           :class => "btn btn-danger",
+           :style => "width: 50px; border-radius: 0 !important;" do %>
+           <img src=<%= image_url('icons/ic_delete_white_18dp.png') %>/>
+          <% end %>
          </div>
         </td>
         
