@@ -15,15 +15,31 @@
     <tr>
       <td colspan="2">
         <div class="field" style="text-align: center">
+          <% logger.debug("Path #{@fileobject.file.url}") %>
           <% if @fileobject.file.url != nil %>
-            <%= image_tag(@fileobject.file.url, :height => "300px") %> <br />
-            <%= form.file_field :file %>
-            <%= form.hidden_field :file_cache %>
-          <% else %>
-            <img src=<%= image_url('noimage.jpg') %> height="300px" width="550px" /> <br />
-            <%= form.file_field :file %>
-            <%= form.hidden_field :file_cache %>
+            <% if @fileobject.file_type == "Image" %>
+                <%
+                    img_width, img_height = FastImage.size(@fileobject.file.path)
+                    if img_width >= img_height
+                        shw_height = (img_height * 800) / img_width
+                        shw_width = 800
+                    else
+                        shw_width = (img_width * 600) / img_height
+                        shw_height = 600
+                    end
+                %>
+                <%= image_tag(@fileobject.file.url, :height => shw_height, :width => shw_width) %>
+            <% elsif @fileobject.file_type == "Sound" %>
+                <audio id="player" controls>
+                    <source src="<%= @fileobject.file.url %>">
+                </audio>
+            <% else %>
+              <img src=<%= image_url('noimage.jpg') %> height="300px" /> 
+            <% end %>
           <% end %>
+          <br /><br />
+          <%= form.file_field :file %>
+          <%= form.hidden_field :file_cache %>
         </div>
       </td>
     </tr>

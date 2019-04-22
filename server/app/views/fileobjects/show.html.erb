@@ -1,56 +1,106 @@
 <h2>
- <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
- File: <%= @fileobject.alias_name %>
+ <img src=<%= image_url('icons/ic_description_black_48dp.png') %> />
+ File: <%= @fileobject.uuid %>
 </h2>
 <hr />
 <div class="btn-group">
-  <% if params[:type] == "consolidation" %>
-    <%=
-     button_to consolidation_url(:id => params[:cid]),
-     {
-      method: :get, :class => "btn btn-secondary",
-      :style => "width: 90px; border-radius: 0 !important;",
-      params: {:lid => params[:pid]}
-     } do %>
-     <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+    <% if params[:type] == "consolidation" %>
+        <%=
+            button_to consolidation_url(:id => params[:cid]),
+            {
+               method: :get, :class => "btn btn-secondary",
+               :style => "width: 90px; border-radius: 0 !important;",
+               params: {
+                   :lid => params[:pid]
+               }
+            } do %>
+            <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+           <% end %>
+           <%=
+            button_to edit_fileobject_path(@fileobject),
+            {
+               method: :get, :class => "btn btn-warning",
+               :style => "width: 90px; border-radius: 0 !important;",
+               params: {
+                  type: params[:type],
+                  cid: params[:cid],
+                  pid: params[:pid]
+               }
+            } do %>
+            <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+        <% end %>
+    <% elsif params[:type] == "material" %>
+        <%=
+            button_to material_url(:id => params[:mid]),
+            {
+               method: :get, :class => "btn btn-secondary",
+               :style => "width: 90px; border-radius: 0 !important;",
+               params: {
+                   :cid => params[:cid],
+                   :pid => params[:pid]
+               }
+            } do %>
+            <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+           <% end %>
+           <%=
+            button_to edit_fileobject_path(@fileobject),
+            {
+               method: :get, :class => "btn btn-warning",
+               :style => "width: 90px; border-radius: 0 !important;",
+               params: {
+                  type: params[:type],
+                  mid: params[:mid],
+                  cid: params[:cid],
+                  pid: params[:pid]
+               }
+            } do %>
+            <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
+        <% end %>
     <% end %>
-    <%=
-     button_to edit_fileobject_path(@fileobject),
-     {
-      method: :get, :class => "btn btn-warning",
-      :style => "width: 90px; border-radius: 0 !important;",
-      params: {type: params[:type], cid: params[:cid], pid: params[:pid]}
-     } do %>
-     <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
-    <% end %>
-  <% end %>
 </div>
 <hr />
 
 <div class="row">
-  <div class="col-sm-6" style="text-align: center; vertical-align: middle">
-    <%= image_tag(@fileobject.file.url, :height => "300px", :width => "550px") %>
-  </div>
-  
-  <div class="col-sm-6">
-    <p><strong>Uuid:</strong><%= @fileobject.uuid %></p>
-    <p><strong>Consolidation:</strong><%= @fileobject.consolidation %></p>
-    <p><strong>Material:</strong><%= @fileobject.material %></p>
-    <p><strong>Created date:</strong><%= @fileobject.created_date %></p>
-    <p><strong>Modified date:</strong><%= @fileobject.modified_date %></p>
-    <p><strong>File name:</strong><%= @fileobject.file %></p>
-    <p><strong>File type:</strong><%= @fileobject.file_type %></p>
-    <p><strong>Alias name:</strong><%= @fileobject.alias_name %></p>
-    <p><strong>Status:</strong><%= @fileobject.status %></p>
-    <p><strong>Make public:</strong><%= @fileobject.make_public %></p>
-    <p><strong>Is locked:</strong><%= @fileobject.is_locked %></p>
-    <p><strong>Source:</strong><%= @fileobject.source %></p>
-    <p><strong>File operation:</strong><%= @fileobject.file_operation %></p>
-    <p><strong>Operating application:</strong><%= @fileobject.operating_application %></p>
-    <p><strong>Caption:</strong><%= @fileobject.caption %></p>
-    <p><strong>Description:</strong><%= @fileobject.description %></p>
-    <p><strong>Flickr photoid:</strong><%= @fileobject.flickr_photoid %></p>
-  </div>
+    <div class="col-sm-6" style="text-align: center; vertical-align: middle">
+        <% if @fileobject.file_type == "Image" %>
+            <%
+                img_width, img_height = FastImage.size(@fileobject.file.path)
+                if img_width >= img_height
+                    shw_height = (img_height * 550) / img_width
+                    shw_width = 550
+                else
+                    shw_width = (img_width * 350) / img_height
+                    shw_height = 350
+                end
+            %>
+            <%= image_tag(@fileobject.file.url, :height => shw_height, :width => shw_width) %>
+        <% elsif @fileobject.file_type == "Sound" %>
+            <img src=<%= image_url('noimage.jpg') %> height="300px" />
+            <audio id="player" controls>
+                <source src="<%= @fileobject.file.url %>">
+            </audio>
+        <% end %>
+    </div>
+    
+    <div class="col-sm-6">
+        <p><strong>Uuid:</strong><%= @fileobject.uuid %></p>
+        <p><strong>Consolidation:</strong><%= @fileobject.consolidation %></p>
+        <p><strong>Material:</strong><%= @fileobject.material %></p>
+        <p><strong>Created date:</strong><%= @fileobject.created_date %></p>
+        <p><strong>Modified date:</strong><%= @fileobject.modified_date %></p>
+        <p><strong>File name:</strong><%= @fileobject.file %></p>
+        <p><strong>File type:</strong><%= @fileobject.file_type %></p>
+        <p><strong>Alias name:</strong><%= @fileobject.alias_name %></p>
+        <p><strong>Status:</strong><%= @fileobject.status %></p>
+        <p><strong>Make public:</strong><%= @fileobject.make_public %></p>
+        <p><strong>Is locked:</strong><%= @fileobject.is_locked %></p>
+        <p><strong>Source:</strong><%= @fileobject.source %></p>
+        <p><strong>File operation:</strong><%= @fileobject.file_operation %></p>
+        <p><strong>Operating application:</strong><%= @fileobject.operating_application %></p>
+        <p><strong>Caption:</strong><%= @fileobject.caption %></p>
+        <p><strong>Description:</strong><%= @fileobject.description %></p>
+        <p><strong>Flickr photoid:</strong><%= @fileobject.flickr_photoid %></p>
+    </div>
 </div>
 
 

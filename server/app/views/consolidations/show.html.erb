@@ -59,10 +59,10 @@
      <thead>
        <tr>
          <th style="width: 100px">Modified</th>
-         <th style="width: 200px">Name</th>
-         <th style="width: 200px">Alias</th>
-         <th style="width: 200px">Type</th>
-         <th style="width: 200px">Status</th>
+         <th style="width: 300px">Name</th>
+         <th style="width: 300px">Alias</th>
+         <th style="width: 100px">Type</th>
+         <th style="width: 100px">Status</th>
          <th style="width: 100px">Public</th>
          <th style="width: auto"></th>
        </tr>
@@ -74,9 +74,9 @@
            <td><%= fileobject.modified_date %></td>
            <td><%= fileobject.file %></td>
            <td><%= fileobject.alias_name %></td>
-           <td><%= fileobject.file_type %></td>
-           <td><%= fileobject.status %></td>
-           <td><%= fileobject.make_public %></td>
+           <td style="text-align: center"><%= fileobject.file_type %></td>
+           <td style="text-align: center"><%= fileobject.status %></td>
+           <td style="text-align: center"><%= fileobject.make_public %></td>
            <td>
              <div class="btn-group">
              <%= button_to fileobject,
@@ -151,13 +151,13 @@
        <% @materials.each do |material| %>
          <tr class="zebra">
            <td><%= material.name %></td>
-           <td><%= material.material_number %></td>
-           <td><%= material.estimated_period_beginning %></td>
-           <td><%= material.estimated_period_peak %></td>
-           <td><%= material.estimated_period_ending %></td>
-           <td><%= material.latitude %></td>
-           <td><%= material.longitude %></td>
-           <td><%= material.altitude %></td>
+           <td style="text-align: center"><%= material.material_number %></td>
+           <td style="text-align: center"><%= material.estimated_period_beginning %></td>
+           <td style="text-align: center"><%= material.estimated_period_peak %></td>
+           <td style="text-align: center"><%= material.estimated_period_ending %></td>
+           <td style="text-align: center"><%= material.latitude %></td>
+           <td style="text-align: center"><%= material.longitude %></td>
+           <td style="text-align: center"><%= material.altitude %></td>
            <td>
              <div class="btn-group">
              <%= button_to material,

@@ -29,8 +29,8 @@
           <tr><th><%= form.label :description %></th><td style="width: 300px"><%= form.text_area :description, :class => "text_field" %></td></tr>
         </table>
         <div class="actions" style="text-align: right">
-          <%= form.hidden_field :cid, :value => params[:cid] %>
-          <%= form.hidden_field :pid, :value => params[:pid] %>
+          <%= form.hidden_field :cid, :value => params[:cid], :id => "cid", :post => true %>
+          <%= form.hidden_field :pid, :value => params[:pid], :id => "pid", :post => true %>
           <%= form.submit %>
       </div>
     </div>

@@ -72,10 +72,10 @@
      <thead>
        <tr>
          <th style="width: 100px">Modified</th>
-         <th style="width: 200px">Name</th>
-         <th style="width: 200px">Alias</th>
-         <th style="width: 200px">Type</th>
-         <th style="width: 200px">Status</th>
+         <th style="width: 300px">Name</th>
+         <th style="width: 300px">Alias</th>
+         <th style="width: 100px">Type</th>
+         <th style="width: 100px">Status</th>
          <th style="width: 100px">Public</th>
          <th style="width: auto"></th>
        </tr>
@@ -87,21 +87,21 @@
            <td><%= fileobject.modified_date %></td>
            <td><%= fileobject.file %></td>
            <td><%= fileobject.alias_name %></td>
-           <td><%= fileobject.file_type %></td>
-           <td><%= fileobject.status %></td>
-           <td><%= fileobject.make_public %></td>
+           <td style="text-align: center"td><%= fileobject.file_type %></td style="text-align: center"td>
+           <td style="text-align: center"td><%= fileobject.status %></td style="text-align: center"td>
+           <td style="text-align: center"><%= fileobject.make_public %></td>
            <td>
              <div class="btn-group">
              <%= button_to fileobject,
               {method: :get, :class => "btn btn-primary",
                :style => "width: 50px; border-radius: 0 !important;",
-               params: {type: "material", cid: params[:cid], pid: params[:pid]}} do %>
+               params: {type: "material", mid: @material.id, cid: params[:cid], pid: params[:pid]}} do %>
                <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
               <% end %>
              <%= button_to edit_fileobject_path(fileobject),
               {method: :get, :class => "btn btn-warning",
                :style => "width: 50px; border-radius: 0 !important;",
-               params: {type: "material", cid: params[:cid], pid: params[:pid]}} do %>
+               params: {type: "material", mid: @material.id, cid: params[:cid], pid: params[:pid]}} do %>
                <img src=<%= image_url('icons/ic_create_white_18dp.png') %>/>
               <% end %>
              <%= button_to fileobject,

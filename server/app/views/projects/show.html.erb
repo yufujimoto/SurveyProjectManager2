@@ -21,9 +21,19 @@
 <div class="row">
   <div class="col-sm-6" style="text-align: center; vertical-align: middle">
     <% if @project.cover.url != nil %>
-     <%= image_tag(@project.cover.url, :height => "300px", :width => "550px") %>
+     <%
+         img_width, img_height = FastImage.size(@project.cover.path)
+         if img_width >= img_height
+             shw_height = (img_height * 550) / img_width
+             shw_width = 550
+         else
+             shw_width = (img_width * 400) / img_height
+             shw_height = 400
+         end
+     %>
+     <%= image_tag(@project.cover.url, :height => shw_height, :width => shw_width) %>
     <% else %>
-     <img src=<%= image_url('noimage.jpg') %> height="300px" width="550px" />
+     <img src=<%= image_url('noimage.jpg') %> width="550px" />
     <% end %>
   </div>
   

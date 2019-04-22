@@ -1,6 +1,19 @@
-<h1>Editing Material</h1>
+<h2>
+    <img src=<%= image_url('icons/ic_inbox_black_48dp.png') %> />
+    Editing Material: <%= @material.uuid %>
+</h2>
+
+<div class="btn-group">
+ <%= button_to material_url(@material),
+  {method: :get, :class => "btn btn-secondary",
+   :style => "width: 90px; border-radius: 0 !important;",
+   params: {cid: params[:cid], pid: params[:pid]}
+  } do%>
+   <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+ <% end %>
+</div>
+<hr />
 
 <%= render 'form', material: @material %>
 
-<%= link_to 'Show', @material %> |
-<%= link_to 'Back', materials_path %>
+

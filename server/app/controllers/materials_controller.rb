@@ -55,7 +55,17 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
+        
+        
+        format.html {
+          redirect_to material_url(
+                                   :id => @material.id,
+                                   params: {
+                                     :cid => params[:material][:cid],
+                                     :pid => params[:material][:pid]
+                                   }),
+          notice: 'Material was successfully updated.'
+        }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit }
@@ -91,6 +101,17 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:uuid, :consolidation, :name, :material_number, :estimated_period_beginning, :estimated_period_peak, :estimated_period_ending, :latitude, :longitude, :altitude, :description)
+      params.require(:material).permit(
+                                       :uuid,
+                                       :consolidation,
+                                       :name,
+                                       :material_number,
+                                       :estimated_period_beginning,
+                                       :estimated_period_peak,
+                                       :estimated_period_ending,
+                                       :latitude,
+                                       :longitude,
+                                       :altitude,
+                                       :description)
     end
 end

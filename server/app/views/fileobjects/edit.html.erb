@@ -1,31 +1,64 @@
-<h2>Editing File</h2>
+<h2>
+    <img src=<%= image_url('icons/ic_description_black_48dp.png') %> />
+    File: <%= @fileobject.uuid %>
+</h2>
 <hr />
 <div class="btn-group">
-  <% if params[:type] == "consolidation" %>
-    <%=
-     button_to consolidation_url(:id => params[:cid]),
-     {
-      method: :get, :class => "btn btn-secondary",
-      :style => "width: 90px; border-radius: 0 !important;",
-      params: {:lid => params[:pid]}
-     } do %>
-     <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+    <% if params[:type] == "consolidation" %>
+        <%=
+         button_to consolidation_url(:id => params[:cid]),
+         {
+            method: :get, :class => "btn btn-secondary",
+            :style => "width: 90px; border-radius: 0 !important;",
+            params: {:lid => params[:pid]}
+         } do %>
+         <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+        <% end %>
+        
+        <%= button_to @fileobject,
+            {
+                method: :get, :class => "btn btn-primary",
+                :style => "width: 90px; border-radius: 0 !important;",
+                params: {
+                    type: params[:type],
+                    cid: params[:cid],
+                    pid: params[:lid]
+                }
+            } do%>
+            <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+        <% end %>
+    <% elsif params[:type] == "material" %>
+        <%=
+         button_to material_url(:id => params[:mid]),
+         {
+            method: :get, :class => "btn btn-secondary",
+            :style => "width: 90px; border-radius: 0 !important;",
+            params: {
+                :cid => params[:cid],
+                :pid => params[:pid]
+            }
+         } do %>
+         <img src=<%= image_url('icons/ic_reply_white_18dp.png') %>/>
+        <% end %>
+        
+        <%= button_to @fileobject,
+            {
+                method: :get, :class => "btn btn-primary",
+                :style => "width: 90px; border-radius: 0 !important;",
+                params: {
+                    type: params[:type],
+                    mid: params[:mid],
+                    cid: params[:cid],
+                    pid: params[:pid]
+                }
+            } do%>
+            <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
+        <% end %>
     <% end %>
-    
-    <%= button_to @fileobject,
-      {
-        method: :get, :class => "btn btn-primary",
-        :style => "width: 90px; border-radius: 0 !important;",
-        params: {
-          type: params[:type],
-          cid: params[:cid], pid:
-          params[:lid]}} do%>
-      <img src=<%= image_url('icons/ic_visibility_white_18dp.png') %>/>
-   <% end %>
-  <% end %>
 </div>
 <hr />
 
 <%= render 'form', fileobject: @fileobject %>
 
 
+    

@@ -12,7 +12,7 @@ class ConsolidationsController < ApplicationController
   # GET /consolidations/1
   # GET /consolidations/1.json
   def show
-    @fileobjects = Fileobject.where(consolidation: @consolidation.uuid).page(params[:page]).per(PER)
+    @fileobjects = Fileobject.where(consolidation: @consolidation.uuid, material:"").page(params[:page]).per(PER)
     @materials = Material.where(consolidation: @consolidation.uuid).page(params[:page]).per(PER)
   end
 
@@ -51,10 +51,15 @@ class ConsolidationsController < ApplicationController
   def update
     respond_to do |format|
       if @consolidation.update(consolidation_params)
-        prj_uuid = @consolidation.project
-        project = Project.where(uuid: prj_uuid).first
-        
-        format.html { redirect_to project_url(project), notice: 'Consolidation was successfully updated.'}
+        logger.debug(params)
+        format.html {
+          redirect_to consolidation_url(
+                                          :id => @consolidation.id,
+                                          params: {
+                                            :lid => params[:consolidation][:pid]
+                                          }
+                                       ),
+          notice: 'Consolidation was successfully updated.'}
         format.json { render :show, status: :ok, location: @consolidation }
       else
         format.html { render :edit }

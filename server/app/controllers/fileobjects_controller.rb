@@ -16,6 +16,10 @@ class FileobjectsController < ApplicationController
   def new
     @fileobject = Fileobject.new
     @fileobject.uuid = SecureRandom.uuid
+    @fileobject.status = "uploaded"
+    @fileobject.operating_application = "Survey Project Manager II"
+    @fileobject.file_operation = "Uploading"
+    @fileobject.description = "This file is uploaded by Survey Project Manager II"
     
     if params[:type] == "consolidation"
       @fileobject.consolidation = params[:consolidation]
@@ -44,7 +48,7 @@ class FileobjectsController < ApplicationController
       
       if %w{jpg png gif bmp jpeg tif tiff}.include?(extension)
         @fileobject.file_type = "Image"
-      elsif %w{wave mp3}.include?(extension)
+      elsif %w{wav wave mp3}.include?(extension)
         @fileobject.file_type = "Sound"
       end
       

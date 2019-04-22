@@ -26,6 +26,7 @@
       </table>
     
       <div class="actions" style="text-align: right">
+          <%= form.hidden_field :pid, :value => params[:lid], :id => "pid", :post => true %>
           <%= form.submit %>
       </div>
     </div>
